@@ -1,4 +1,6 @@
 const express = require('express');
+const path = require('path');
+
 const app = express();
 app.use(express.json());
 
@@ -30,6 +32,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/dist'));
 
     app.get('*', (req, res) => {
+        console.log("MATCH");
         res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
     });
 }
